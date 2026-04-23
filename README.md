@@ -11,14 +11,14 @@ What I found especially interesting in this assignment was the connection betwee
 ## Part 1
 
 ### Pinned Cloth Wireframe
-![Pinned cloth wireframe](images/part1_pinned4_wireframe.png)
+![Pinned cloth wireframe](images/part1_all_constraints.png)
 
 ### Constraint Comparison
 
 <table>
   <tr>
     <td align="center">
-      <img src="images/part1_no_shearing.png" alt="Without shearing constraints" width="300"><br>
+      <img src="images/part1_no_shearing.png.png" alt="Without shearing constraints" width="300"><br>
       <b>Without shearing constraints</b>
     </td>
     <td align="center">
@@ -61,7 +61,7 @@ A larger `ks` makes the springs resist deformation more strongly, while a smalle
 <table>
   <tr>
     <td align="center">
-      <img src="images/part2_low_ks.png" alt="Low spring constant" width="360"><br>
+      <img src="images/part2_low_ks.png.png" alt="Low spring constant" width="360"><br>
       <b>Low ks</b>
     </td>
     <td align="center">
@@ -186,7 +186,7 @@ Third, in `self_collide`, I looked up candidate neighbors in the same spatial ce
 <table>
   <tr>
     <td align="center">
-      <img src="images/part4_self_collision_low_density.png" alt="Low density self collision" width="360"><br>
+      <img src="images/part4_self_collision_stage1.png" alt="Low density self collision" width="360"><br>
       <b>Low density</b>
     </td>
     <td align="center">
@@ -207,7 +207,7 @@ With density, increasing it made the cloth behave as if it were heavier. The clo
       <b>Low ks</b>
     </td>
     <td align="center">
-      <img src="images/part4_self_collision_high_ks.png" alt="High ks self collision" width="360"><br>
+      <img src="images/part4_self_collision_stage3.png" alt="High ks self collision" width="360"><br>
       <b>High ks</b>
     </td>
   </tr>
