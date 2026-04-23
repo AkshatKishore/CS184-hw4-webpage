@@ -38,23 +38,23 @@ What I found especially interesting in this assignment was the connection betwee
 
 For this part, I ran a series of experiments in the cloth simulator by pausing the simulation with `P`, changing one parameter at a time in the GUI, and then resuming. The simulator computes the motion of the cloth by first calculating the mass per point mass as
 
-$$
+`
 \frac{\text{width} \cdot \text{height} \cdot \text{density}}{\text{num\_width\_points} \cdot \text{num\_height\_points}}
-$$
+`
 
 It then sums the external acceleration forces to form the external force \(F = ma\), applies Hooke’s law spring forces, and updates positions using damped Verlet integration. In my implementation, the bending spring force is weaker than the others because I multiply it by `0.2 * ks`. The damping term appears in the position update as
 
-$$
+`
 (1 - \text{damping}/100)(x_t - x_{t-\Delta t})
-$$
+`
 
 ### Effect of `ks` (Spring Constant)
 
 Changing `ks` has the strongest influence on how stiff the cloth feels because the spring force is directly proportional to
 
-$$
+`
 ks \cdot (\text{current length} - \text{rest length})
-$$
+`
 
 A larger `ks` makes the springs resist deformation more strongly, while a smaller `ks` makes the cloth more compliant. When `ks` is very low, the cloth looks loose and stretchy: it sags more under gravity, stretches more between pinned points, and settles into a softer resting shape. When `ks` is very high, the cloth behaves more like a stiff fabric: it resists stretching, stays closer to its initial shape as it falls, and reaches a resting state with less sag.
 
@@ -117,15 +117,15 @@ In Part 3, I implemented collisions with both spheres and planes by iterating th
 
 For sphere collisions, I checked whether a point mass was inside or on the sphere by computing the distance from the point mass to the sphere center. If the distance was less than or equal to the sphere radius, a collision occurred. I then computed the tangent point by taking the direction from the sphere center to the point mass and extending it to exactly one radius. That point represents where the point mass should lie on the sphere surface. The correction vector was then computed from `last_position` to the tangent point, and the final position was updated using
 
-$$
+`
 \text{last\_position} + (1 - \text{friction}) \cdot \text{correction}
-$$
+`
 
 For plane collisions, I treated a collision as a point mass crossing from one side of the plane to the other during the last time step. I computed signed distances from both the current position and the previous position to the plane using the plane normal. If the signs differed, then the point mass had crossed the plane. I then found the line-plane intersection point, added a small `SURFACE_OFFSET` in the direction of the original side of the plane, and used that adjusted tangent point to compute the correction vector. As with the sphere, the new position became
 
-$$
+`
 \text{last\_position} + (1 - \text{friction}) \cdot \text{correction}
-$$
+`
 
 In `scene/sphere.json`, varying `ks` had a clear effect on the draping behavior. With the default `ks = 5000`, the cloth draped naturally around the sphere while still retaining stiffness. With `ks = 500`, the cloth became much softer, sagged farther down the sides, and formed deeper folds. With `ks = 50000`, the cloth behaved much more rigidly and tended to bridge over the sphere instead of wrapping closely around it.
 
